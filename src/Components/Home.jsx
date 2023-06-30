@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import { styled } from 'styled-components'
 import Categories from './Comp2.jsx/Categories'
+import { useNavigate } from 'react-router-dom'
 
 const Container= styled.div`
     background-color: rgba(187, 191, 199, 0.322);
@@ -53,9 +54,12 @@ padding: 0 0.5rem 0;
 `
 
 const Home = () => {
+
+    const Navigate = useNavigate()
+
   return (
     <div>
-        <Navbar/>
+        
         <Container>
             <Cont_1>
                 <Cont_2>
@@ -66,7 +70,7 @@ const Home = () => {
                 <Cont_c2>
                     <p>Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum ponderum. Est audiam animal molestiae te.</p>
                 </Cont_c2>
-                <button>ORDER NOW</button>
+                <button onClick={() => Navigate('/products')}>ORDER NOW</button>
                 </Cont_2>
 
             </Cont_1>

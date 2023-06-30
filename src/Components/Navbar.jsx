@@ -8,15 +8,19 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const NavbarPage = () => {
+
+  const Navigate=useNavigate()
+
   return (
     <div>
        <Navbar expand="lg" className="bg-body-tertiary" style={{padding:'0',borderBottom:'1px solid grey'}}>
       <Container  style={{backgroundColor:'white',padding:'1rem'}} fluid>
-        <Navbar.Brand href="#" style={{marginLeft:'5rem', color:'green'}}>MY MART</Navbar.Brand>
+        <Navbar.Brand href="#" style={{marginLeft:'5rem', color:'green'}} onClick={() => Navigate('/')}>MY MART</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
