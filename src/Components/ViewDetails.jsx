@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react'
-
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { productsList } from '../Redux/Slices/productSlice';
-import { useNavigate } from 'react-router-dom';
+import { selectedProduct } from '../Redux/Slices/viewDetailsslice';
 
 import {
     MDBContainer,
@@ -17,34 +15,73 @@ import {
     MDBBtn,
     MDBRipple,
   } from "mdb-react-ui-kit";
-
-  
-
-const Products = () => {
-    
-    const Navigate=useNavigate()
+import { addItem } from '../Redux/Slices/CartSlice';
 
 
-    const dispatch = useDispatch()
-    const produc = useSelector((state) => state.Prod);
-    // console.log('dispatched',produc);
+const ViewDetails = () => {
 
-    const fetchProducts =async ()=> {
-        const response = await axios.get('https://fakestoreapi.com/products')
-                            .catch((err) =>{ console.log('Error',err);})
-                            // console.log('response',response);
-                            dispatch(productsList(response.data))
+    const Navigate =useNavigate()
+
+  const { productId } = useParams();
+  const dispatch = useDispatch();
+
+  // -------------
+  const mainProducts = useSelector((state) => state.Prod);
+  console.log('Main product////',mainProducts);
+
+  const itemId= mainProducts.filter((item) => item.id == productId)
+  // ---------------
+
+  const product = useSelector((state) => state.view);
+
+  const produc = [product]
+
+  // console.log('view product',produc);
+
+  // console.log(productId);
+
+  const fetchProductDetails = async () => {
+    try {
+      const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+      dispatch(selectedProduct(response.data));
+    } catch (error) {
+      console.log('Error:', error);
     }
+  };
 
-    useEffect(() =>{
-        fetchProducts()
-    },[])
+  useEffect(() => {
+    if (productId && productId !== '') {
+      fetchProductDetails();
+    }
+  }, [productId]);
 
-    console.log('thhat goning to map',produc);
+
+  // --adding product to cart ---
+  const p = useSelector((state) => state.cart)
+  console.log('to cart.....',p);
+
+  const addHandler = () => {
+
+    const toCart = p.filter((item) => item.id ==productId)
+
+      if(toCart.length > 0){
+        return alert("Product already Exist")
+      }else{
+          dispatch(addItem(product))
+          
+            alert("Product added To cart!")
+            Navigate('/cart')
+          
+          
+            
+        }
+          
 
     
+  }
 
   return (
+
     <>
 
 <MDBContainer fluid className="my-5 text-center">
@@ -86,7 +123,7 @@ const Products = () => {
                                     
                                         <p style={{fontWeight:'bold',fontSize:'30px'}}>$ {item.price}</p>
                                     
-                                    <button onClick={()=>Navigate(`/view/${item.id}`)}>View</button>
+                                    <button onClick={ () => addHandler()} >Add Item</button>
                                 </MDBCardBody>
                             </MDBCard>
                         
@@ -98,8 +135,12 @@ const Products = () => {
                     </MDBRow>
                 </MDBContainer>
         
+    
     </>
+   
+    
   )
-}
+  
+};
 
-export default Products
+export default ViewDetails;

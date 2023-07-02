@@ -1,10 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import axios from 'axios';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { productsList } from '../Redux/Slices/productSlice';
-import { useNavigate } from 'react-router-dom';
 
 import {
     MDBContainer,
@@ -17,31 +12,11 @@ import {
     MDBBtn,
     MDBRipple,
   } from "mdb-react-ui-kit";
+import { useSelector } from 'react-redux';
 
-  
+const Cart = () => {
 
-const Products = () => {
-    
-    const Navigate=useNavigate()
-
-
-    const dispatch = useDispatch()
-    const produc = useSelector((state) => state.Prod);
-    // console.log('dispatched',produc);
-
-    const fetchProducts =async ()=> {
-        const response = await axios.get('https://fakestoreapi.com/products')
-                            .catch((err) =>{ console.log('Error',err);})
-                            // console.log('response',response);
-                            dispatch(productsList(response.data))
-    }
-
-    useEffect(() =>{
-        fetchProducts()
-    },[])
-
-    console.log('thhat goning to map',produc);
-
+    const cartItems = useSelector((state) => state.cart)
     
 
   return (
@@ -51,9 +26,9 @@ const Products = () => {
                     
                     <MDBRow>
                     {
-                        produc.map((item) => (
+                        cartItems.map((item) => (
 
-                       <MDBCol md="10" lg="3" className="mb-4 d-flex" key={item.id}>
+                       <MDBCol md="10" lg="3" className="mb-4 d-flex" >
 
                             <MDBCard style={{width:'50rem'}}>
                                 <MDBRipple rippleColor="light" rippleTag="div" className="bg-image rounded hover-zoom">
@@ -86,7 +61,7 @@ const Products = () => {
                                     
                                         <p style={{fontWeight:'bold',fontSize:'30px'}}>$ {item.price}</p>
                                     
-                                    <button onClick={()=>Navigate(`/view/${item.id}`)}>View</button>
+                                    <button >Add Item</button>
                                 </MDBCardBody>
                             </MDBCard>
                         
@@ -97,9 +72,10 @@ const Products = () => {
                         
                     </MDBRow>
                 </MDBContainer>
-        
+    
+    
     </>
   )
 }
 
-export default Products
+export default Cart

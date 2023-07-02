@@ -10,9 +10,10 @@ const productSlice = createSlice({
             state.push(...action.payload); // Add new items from the payload
             // console.log('state',state);
         },
+       
     },
 });
 
-export const { productsList } = productSlice.actions;
+export const { productsList} = productSlice.actions;
 
 export default productSlice.reducer;
