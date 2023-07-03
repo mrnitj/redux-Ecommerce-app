@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { BsCart2 } from 'react-icons/bs';
-import { AiOutlineDown2  } from 'react-icons/ai';
+import { MdOutlineAdminPanelSettings  } from 'react-icons/md';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 
 
@@ -30,6 +30,7 @@ const NavbarPage = () => {
           >
            
           </Nav>
+          <Link to={'/admin'} style={{fontSize:'30px', margin:'0 1rem  0 1rem',color:'black'}}><MdOutlineAdminPanelSettings /></Link>
          <NavDropdown id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -40,7 +41,7 @@ const NavbarPage = () => {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#action1" style={{fontSize:'30px', margin:'0 1rem  0 1rem'}}><BsCart2 /></Nav.Link>
+            <Link to={'/cart'} style={{fontSize:'30px', margin:'0 1rem  0 1rem',color:'black'}}><BsCart2 /></Link>
             <Nav.Link href="#action1" style={{fontSize:'30px', margin:'0 1.5rem 0 1rem'}}><FaUserCircle /></Nav.Link>
         </Navbar.Collapse>
       </Container>
