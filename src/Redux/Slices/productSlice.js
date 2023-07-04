@@ -8,12 +8,16 @@ const productSlice = createSlice({
             // console.log(state);
             state.length = 0; // Clear the existing state
             state.push(...action.payload); // Add new items from the payload
-            // console.log('state',state);
+            
         },
-       
+        removeProduct: (state, action) => {
+            const { id } = action.payload;
+            return state.filter((e) => e.id !== id);
+        },
+
     },
 });
 
-export const { productsList} = productSlice.actions;
+export const { productsList , removeProduct} = productSlice.actions;
 
 export default productSlice.reducer;

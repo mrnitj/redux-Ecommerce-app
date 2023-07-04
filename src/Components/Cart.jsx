@@ -78,15 +78,11 @@ const Cart = () => {
                                                     xl="2"
                                                     className="d-flex align-items-center justify-content-around"
                                                 >
-                                                    <MDBBtn color="link" className="px-2">
-                                                        <MDBIcon fas icon="minus" />
-                                                    </MDBBtn>
+                                                    
 
                                                     <MDBInput min={0} defaultValue={1} type="number" size="sm" />
 
-                                                    <MDBBtn color="link" className="px-2">
-                                                        <MDBIcon fas icon="plus" />
-                                                    </MDBBtn>
+                                                    
                                                 </MDBCol>
                                                 <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
                                                     <MDBTypography tag="h5" className="mb-0">
