@@ -17,7 +17,10 @@ import Admin_add_Products from './Components/Admin/Admin_add_Products'
 const MainRouter = () => {
   return (
     <div>
+      <div style={{position:'sticky',top:'0',zIndex:'999'}}>
+
       <NavbarPage/>
+      </div>
        
         <Routes>
             <Route path='/' element={<Home/>}/>
