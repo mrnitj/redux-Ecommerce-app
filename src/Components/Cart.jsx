@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, removeItem } from "../Redux/Slices/CartSlice";
 import { styled } from "styled-components";
-import { GiShoppingBag } from 'react-icons/gi';
+import { GiShoppingBag } from "react-icons/gi";
 
 import {
     MDBBtn,
@@ -16,7 +16,6 @@ import {
     MDBInput,
     MDBRow,
     MDBTypography,
-    
 } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
 
@@ -27,8 +26,7 @@ const Container = styled.div`
 `;
 
 const Cart = () => {
-
-    const Navigate=useNavigate()
+    const Navigate = useNavigate();
 
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
@@ -51,7 +49,12 @@ const Cart = () => {
                                 <div>
                                     <p className="mb-0">
                                         <span className="text-muted">Back To Shoping.. </span>
-                                        <button onClick={() => Navigate('/products')} style={{border:'none',fontSize:'25px'}}><GiShoppingBag/></button>
+                                        <button
+                                            onClick={() => Navigate("/products")}
+                                            style={{ border: "none", fontSize: "25px" }}
+                                        >
+                                            <GiShoppingBag />
+                                        </button>
                                     </p>
                                 </div>
                             </div>
@@ -71,37 +74,38 @@ const Cart = () => {
                                                 </MDBCol>
                                                 <MDBCol md="3" lg="3" xl="3">
                                                     <p className="lead fw-normal mb-2">{item.title}</p>
-                                      </MDBCol>
+                                                </MDBCol>
                                                 <MDBCol
                                                     md="3"
                                                     lg="3"
                                                     xl="2"
                                                     className="d-flex align-items-center justify-content-around"
                                                 >
-                                                    
-
                                                     <MDBInput min={0} defaultValue={1} type="number" size="sm" />
-
-                                                    
                                                 </MDBCol>
                                                 <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
                                                     <MDBTypography tag="h5" className="mb-0">
                                                         ${item.price}
                                                     </MDBTypography>
-                                                </MDBCol >
+                                                </MDBCol>
                                                 <MDBCol>
-                                                <button style={{background:'transparent'}} onClick={removeHandler} id={item.id}>Remove</button>
+                                                    <button
+                                                        style={{ background: "transparent" }}
+                                                        onClick={removeHandler}
+                                                        id={item.id}
+                                                    >
+                                                        Remove
+                                                    </button>
                                                 </MDBCol>
                                             </MDBRow>
                                         </MDBCardBody>
                                     </MDBCard>
                                 ))}
                             </Container>
-                            <MDBCol style={{display:'flex',justifyContent:'space-between'}}> 
-                            
-                            <button onClick={()=>dispatch(clearCart())}>Clear cart</button>
-                           
-                            <button>Buy Now</button>
+                            <MDBCol style={{ display: "flex", justifyContent: "space-between" }}>
+                                <button onClick={() => dispatch(clearCart())}>Clear cart</button>
+
+                                <button>Buy Now</button>
                             </MDBCol>
                             {/* ------ */}
                         </MDBCol>
