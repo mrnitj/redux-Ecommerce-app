@@ -17,6 +17,7 @@ import {
     MDBTypography,
 } from "mdb-react-ui-kit";
 import { removeProduct } from "../../Redux/Slices/productSlice";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
     height: 90vh;
@@ -26,10 +27,14 @@ const Container = styled.div`
 `;
 
 const Admin_Products = () => {
+    const Navigate= useNavigate()
+
     const adminProducts = useSelector((state) => state.Prod);
-    console.log(adminProducts);
+    // console.log(adminProducts);
 
     const dispatch = useDispatch();
+
+   
 
     const removeHandler = (e) => {
         const removeId = parseInt(e.target.id);
@@ -79,7 +84,7 @@ const Admin_Products = () => {
                                                         justifyContent: "space-between",
                                                     }}
                                                 >
-                                                    <button style={{ background: "transparent" }} id={item.id}>
+                                                    <button style={{ background: "transparent" }} onClick={() => Navigate(`/adminedit/${item.id}`)}>
                                                         Edit
                                                     </button>
 

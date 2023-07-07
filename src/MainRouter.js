@@ -30,7 +30,7 @@ const MainRouter = () => {
             <Route path='/admin' element={<Admin_Interface/>} />
             <Route path='/adminusers' element={<Admin_users/>} />
             <Route path='/adminproducts' element={<Admin_Products/>} />
-            <Route path='/adminedit' element={<Admin_Edit/>} />
+            <Route path='/adminedit/:editId' element={<Admin_Edit/>} />
             <Route path='/adminaddproduct' element={<Admin_add_Products/>} />
         </Routes>
         

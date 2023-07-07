@@ -11,13 +11,29 @@ const productSlice = createSlice({
             
         },
         removeProduct: (state, action) => {
+        
             const { id } = action.payload;
             return state.filter((e) => e.id !== id);
         },
+        editProduct: (state, action) => {
+            
+            const {id , edited} = action.payload;
+            console.log(state);
+            const newone= state.find((e) => e.id === parseInt(id))
+            console.log('newOnesss',newone);
+                if( newone ) {
+                     newone.id =id
+                     newone.edited = edited;
+                
+                }
+                
+                return state
+                
+            },
 
     },
 });
 
-export const { productsList , removeProduct} = productSlice.actions;
+export const { productsList , removeProduct, editProduct} = productSlice.actions;
 
 export default productSlice.reducer;
