@@ -35,9 +35,9 @@ const NavbarPage = () => {
                         <Link to={"/cart"} style={{ fontSize: "30px", margin: "0 1rem  0 1rem", color: "black" }}>
                             <BsCart2 />
                         </Link>
-                        <Nav.Link href="#action1" style={{ fontSize: "30px", margin: "0 1.5rem 0 1rem" }}>
+                        <Link to={"/login"} style={{ fontSize: "30px", margin: "0 1.5rem 0 1rem" }}>
                             <FaUserCircle />
-                        </Nav.Link>
+                        </Link>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
