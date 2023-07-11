@@ -27,7 +27,7 @@ const ViewDetails = () => {
     const mainProducts = useSelector((state) => state.Prod);
     console.log("Main product////", mainProducts);
 
-    const itemId = mainProducts.filter((item) => item.id == productId);
+    // const itemId = mainProducts.filter((item) => item.id == productId);
     // ---------------
 
     const product = useSelector((state) => state.view);

@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-background-color: lightblue;
+/* background-color: lightblue; */
 height: 100vh;
 width: 100%;
 display: flex;

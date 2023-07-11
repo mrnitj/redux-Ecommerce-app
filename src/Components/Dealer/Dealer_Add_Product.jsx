@@ -39,21 +39,14 @@ const Dealer_Add_Product = () => {
                         
                         style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}
                     >
-                        <label htmlFor="">Item Id</label>
-                        <input className="additem" type="number" name="pdId" />
+                       
                         <label htmlFor="">Item Image/url path</label>
                         <input className="additem" type="text" name="pdUrl" />
                         <label htmlFor="">Item Name</label>
                         <input className="additem" type="text" name="pdTitle" />
                         <label htmlFor="">Item Price</label>
                         <input className="additem" type="number" name="pdPrice" />
-                        <label htmlFor="">Item Model</label>
-                        {/* <input className="additem" type="text" name="pdModel" /> */}
-                        <select name="pdModel" id="">
-                            <option value="dress">Dress</option>
-                            <option value="footwear">Footwear</option>
-                            <option value="toys">Toys</option>
-                        </select>
+                     
                         <label htmlFor="">Item Discription</label>
                         <textarea className="additem" name="" id="" cols="30" rows="10" />
                         <Button variant="outline-secondary" style={{ fontSize: "20px" }}>

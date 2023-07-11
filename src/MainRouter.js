@@ -9,8 +9,8 @@ import Cart from './Components/Cart'
 import Admin_Interface from './Components/Admin/Admin_Interface'
 import Admin_users from './Components/Admin/Admin_users'
 
-import Admin_Edit from './Components/Admin/Admin_Edit'
-import Admin_add_Products from './Components/Admin/Admin_add_Products'
+
+
 import UserLoging from './Components/UserLoging'
 import UserRegister from './Components/UserRegister'
 import Dealer_Interface from './Components/Dealer/Dealer_Interface'
@@ -41,8 +41,8 @@ const MainRouter = () => {
             <Route path='/admin' element={<Admin_Interface/>} />
             <Route path='/adminusers' element={<Admin_users/>} />
             
-            <Route path='/adminedit/:editId' element={<Admin_Edit/>} />
-            <Route path='/adminaddproduct' element={<Admin_add_Products/>} />
+            
+            
 
 
 
@@ -50,7 +50,7 @@ const MainRouter = () => {
             <Route path='/dealer' element={<Dealer_Interface/>} />         
             <Route path='/dealerproducts' element={<Dealer_Products/>} />         
             <Route path='/dealeraddproducts' element={<Dealer_Add_Product/>} />         
-            <Route path='/dealereditdproducts' element={<Dealer_Edit_Products/>} />         
+            <Route path='/dealereditdproducts/:editId' element={<Dealer_Edit_Products/>} />         
                  
         </Routes>
         

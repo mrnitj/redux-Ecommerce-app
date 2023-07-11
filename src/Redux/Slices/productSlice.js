@@ -17,13 +17,16 @@ const productSlice = createSlice({
         },
         editProduct: (state, action) => {
             
-            const {id , edited} = action.payload;
+            const {id , title,image,price,description} = action.payload;
             console.log(state);
             const newone= state.find((e) => e.id === parseInt(id))
             console.log('newOnesss',newone);
                 if( newone ) {
-                     newone.id =id
-                     newone.edited = edited;
+                     newone.id =parseInt(id)
+                     newone.title = title;
+                     newone.image = image;
+                     newone.price= price;
+                     newone.description=description;
                 
                 }
                 
