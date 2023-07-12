@@ -17,6 +17,7 @@ import Dealer_Interface from './Components/Dealer/Dealer_Interface'
 import Dealer_Products from './Components/Dealer/Dealer_Products'
 import Dealer_Add_Product from './Components/Dealer/Dealer_Add_Product'
 import Dealer_Edit_Products from './Components/Dealer/Dealer_Edit_Products'
+import Demo_design from './Demo_design'
 
 
 
@@ -40,6 +41,10 @@ const MainRouter = () => {
 
             <Route path='/admin' element={<Admin_Interface/>} />
             <Route path='/adminusers' element={<Admin_users/>} />
+
+
+
+            {/* <Route path='/demo' element={<Demo_design/>} /> */}
             
             
             

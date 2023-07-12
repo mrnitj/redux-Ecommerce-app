@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProduct } from "../Redux/Slices/viewDetailsslice";
+import { styled } from "styled-components";
 
 import {
     MDBContainer,
@@ -16,6 +17,60 @@ import {
     MDBRipple,
 } from "mdb-react-ui-kit";
 import { addItem } from "../Redux/Slices/CartSlice";
+
+const MainContainer = styled.div`
+padding: 6rem 6rem 10rem 6rem;
+height: 100%;
+
+
+/* background-color: #21b1ce; */
+`;
+
+const Container = styled.div`
+display: flex;
+
+
+/* background-color: #f0ecec; */
+`;
+const Cont_Left = styled.div`
+padding: 2rem 2rem 3rem 2rem;
+flex:1;
+height: 100%;
+/* background-color: #b33d3d; */
+`;
+const Left1 = styled.div`
+display: flex;
+justify-content: center;
+height: 100%;
+/* background-color: #000000; */
+
+`;
+const Cont_Right = styled.div`
+flex: 1;
+flex-direction: column;
+display: flex;
+
+justify-content: space-between;
+/* background-color: #80ddf0; */
+`;
+const Right1 = styled.div`
+display: flex;
+flex-direction: column;
+justify-content:space-evenly;
+/* background-color: #e180f0; */
+h3,h4{
+    margin-bottom: 1rem;
+}
+`;
+const Right2 = styled.div`
+/* background-color: #658e67; */
+    button{
+        width: 100%;
+        margin-bottom:5rem;
+    }
+
+`;
+
 
 const ViewDetails = () => {
     const Navigate = useNavigate();
@@ -71,43 +126,37 @@ const ViewDetails = () => {
     };
 
     return (
-        <>
-            <MDBContainer fluid className="my-5 text-center">
-                <MDBRow>
-                    {produc.map((item) => (
-                        <MDBCol md="10" lg="3" className="mb-4 d-flex" key={item.id}>
-                            <MDBCard style={{ width: "50rem" }}>
-                                <MDBRipple rippleColor="light" rippleTag="div" className="bg-image rounded hover-zoom">
-                                    <MDBCardImage src={item.image} fluid className="w-100" style={{ height: "350px" }} />
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <div className="d-flex justify-content-start align-items-end h-100">
-                                                <h5>
-                                                    <span className="badge bg-primary ms-2">New</span>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div className="hover-overlay">
-                                            <div
-                                                className="mask"
-                                                style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-                                            ></div>
-                                        </div>
-                                    </a>
-                                </MDBRipple>
-                                <MDBCardBody>
-                                    <h5 className="card-title mb-3">{item.title}</h5>
+        
+            <MainContainer>
 
-                                    <p style={{ fontWeight: "bold", fontSize: "30px" }}>$ {item.price}</p>
+            {
+                produc.map((item) =>(
+                    <Container>
 
-                                    <button onClick={() => addHandler()}>Add Item</button>
-                                </MDBCardBody>
-                            </MDBCard>
-                        </MDBCol>
-                    ))}
-                </MDBRow>
-            </MDBContainer>
-        </>
+            <Cont_Left>
+                <Left1>
+                    <img style={{height:'90%',width
+                :'50%'}} src={item.image} alt="" />
+                </Left1>
+            </Cont_Left>
+            <Cont_Right>
+              <Right1>
+                    <h2>{item.title}</h2>
+                    <h4>"{item.description}"</h4>
+                    <h3>$ {item.price}</h3>
+                    <h5>rating</h5>
+              </Right1>
+              <Right2>
+                <button onClick={() => addHandler()}>Add To Cart</button>
+              </Right2>
+            </Cont_Right>
+        </Container>
+                ))
+            }
+
+    </MainContainer>
+           
+       
     );
 };
 
