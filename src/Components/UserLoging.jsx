@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import axios from "axios";
 
 import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBLink, CDBContainer } from "cdbreact";
 import { styled } from "styled-components";
@@ -32,17 +33,30 @@ const UserLoging = () => {
     const handleSubmit = () =>{
         const Email = inputRef.current.email.value;
         const Password = inputRef.current.password.value;
-        const userDetails = Users.filter((item) => item.userEmail === Email && item.userPassword === Password)
-        console.log('userdealtails',userDetails);
 
-        if(userDetails.length > 0){
-            Navigate('/')
-            alert('loging Sucssefull')
+        
+axios.post('http://localhost:4000/admin/login', {
+    userName: 'Email',
+    password: 'password'
+  })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 
-        }
-        else{
-            alert('Please try againg')
-        }   
+        // const userDetails = Users.filter((item) => item.userEmail === Email && item.userPassword === Password)
+        // console.log('userdealtails',userDetails);
+
+        // if(userDetails.length > 0){
+        //     Navigate('/')
+        //     alert('loging Sucssefull')
+
+        // }
+        // else{
+        //     alert('Please try againg')
+        // }   
     }
 
 
