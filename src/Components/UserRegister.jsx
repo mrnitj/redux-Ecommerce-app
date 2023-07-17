@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import axios from 'axios';
 
 import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBLink, CDBContainer } from 'cdbreact';
 import { styled } from 'styled-components';
@@ -30,7 +31,7 @@ const UserRegister = () => {
 
   const dispatch = useDispatch()
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
 
     const firstName = inputRef.current.firstname.value;
     const secondName = inputRef.current.secondname.value;
@@ -38,8 +39,25 @@ const UserRegister = () => {
     const userPassword = inputRef.current.password.value;
     const userPhone = inputRef.current.phone.value;
 
-    dispatch(userList({firstName,secondName,userEmail,userEmail,userPassword,userPhone}))
-    Navigate('/login')
+   await axios.post('http://localhost:4000/users/register', {
+            firstName: firstName,
+            secondName: secondName,
+            email: userEmail,
+            password: userPassword,
+            phone: userPhone,
+            // location: 'New York',
+            // address: '123 Main St',
+            // flatNo: 'A1'
+            })
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    // dispatch(userList({firstName,secondName,userEmail,userEmail,userPassword,userPhone}))
+    // Navigate('/login')
   }
 
   return (

@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 import { MDBBadge, MDBBtn, MDBTable,MDBTableBody } from 'mdb-react-ui-kit';
 import { styled } from 'styled-components';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
  const Container = styled.div`
   height: 100vh;
@@ -15,6 +16,18 @@ const Admin_users = () => {
 
   const userList = useSelector((state) => state.user)
   console.log(userList);
+
+  axios.get('http://localhost:4000/user/profiles', {
+  headers: {
+    Authorization: 'Bearer <token>'
+  }
+})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
   return (
     <MDBTable align='middle'>

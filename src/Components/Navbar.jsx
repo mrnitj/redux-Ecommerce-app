@@ -23,7 +23,7 @@ const NavbarPage = () => {
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll></Nav>
-                        <Link to={"/admin"} style={{ fontSize: "30px", margin: "0 1rem  0 1rem", color: "black" }}>
+                        <Link to={"/adminLogin"} style={{ fontSize: "30px", margin: "0 1rem  0 1rem", color: "black" }}>
                             <MdOutlineAdminPanelSettings />
                         </Link>
                         <NavDropdown id="navbarScrollingDropdown">

@@ -8,7 +8,7 @@ import ViewDetails from './Components/ViewDetails'
 import Cart from './Components/Cart'
 import Admin_Interface from './Components/Admin/Admin_Interface'
 import Admin_users from './Components/Admin/Admin_users'
-
+import Admin_Login from './Components/Admin/Admin_Login'
 
 
 import UserLoging from './Components/UserLoging'
@@ -39,6 +39,7 @@ const MainRouter = () => {
             <Route path='/register' element={<UserRegister/>} />
 
 
+            <Route path='/adminLogin' element={<Admin_Login/>} />
             <Route path='/admin' element={<Admin_Interface/>} />
             <Route path='/adminusers' element={<Admin_users/>} />
 

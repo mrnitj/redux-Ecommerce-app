@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
-import axios from "axios";
-
 import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBLink, CDBContainer } from "cdbreact";
-import { styled } from "styled-components";
+import axios from 'axios';
+import React, { useRef } from 'react'
+import { styled } from 'styled-components';
+
+
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -21,47 +22,32 @@ align-items: center;
 
 `;
 
-const UserLoging = () => {
+const Admin_Login = () => {
 
-    const inputRef = useRef(null);
-    const Navigate = useNavigate()
+  const inputRef = useRef(null)
+  const Navigate = useNavigate()
+
+  const handleSubmit = async () =>{
+    const adminEmail = inputRef.current.email.value;
+    const adminPassword=inputRef.current.password.value;
+
     
-
-    const Users = useSelector((state) => state.user)
-    console.log(Users);
-
-    const handleSubmit = async () =>{
-        const Email = inputRef.current.email.value;
-        const Password = inputRef.current.password.value;
-
-        axios.post('http://localhost:4000/users/login', {
-        email: Email,
-        password: Password
-        })
+      axios.post('http://localhost:4000/admin/login', {
+        userName: adminEmail,
+        password: adminPassword
+      })
         .then(response => {
-            console.log(response.data);
+          console.log(response.data);
+          Navigate('/admin')
         })
         .catch(error => {
-            console.error(error);
+          console.error(error);
+          alert('Please Try Again')
         });
-      
-        // const userDetails = Users.filter((item) => item.userEmail === Email && item.userPassword === Password)
-        // console.log('userdealtails',userDetails);
+  }
 
-        // if(userDetails.length > 0){
-        //     Navigate('/')
-        //     alert('loging Sucssefull')
-
-        // }
-        // else{
-        //     alert('Please try againg')
-        // }   
-    }
-
-
-
-    return (
-        <Container>
+  return (
+    <Container>
             <CDBContainer className="CDBContainer">
                 <CDBCard style={{width: "30rem",borderRadius:'10%'}}>
                     <form 
@@ -107,7 +93,7 @@ const UserLoging = () => {
                 </CDBCard>
             </CDBContainer>
         </Container>
-    );
-};
+  )
+}
 
-export default UserLoging;
+export default Admin_Login
