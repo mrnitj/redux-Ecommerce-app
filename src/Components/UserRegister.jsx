@@ -50,7 +50,7 @@ const UserRegister = () => {
             // flatNo: 'A1'
             })
             .then(response => {
-                console.log(response.data);
+                console.log(response.cookie);
             })
             .catch(error => {
                 console.error(error);

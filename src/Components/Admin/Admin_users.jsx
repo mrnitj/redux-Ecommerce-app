@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const Admin_users = () => {
 
-  const userList = useSelector((state) => state.user)
+  const userList = useSelector((state) => state.user.initialState)
   console.log(userList);
 
   axios.get('http://localhost:4000/user/profiles', {

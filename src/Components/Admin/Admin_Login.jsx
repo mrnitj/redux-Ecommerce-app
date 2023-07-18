@@ -38,6 +38,7 @@ const Admin_Login = () => {
       })
         .then(response => {
           console.log(response.data);
+          localStorage.setItem('adminToken',response.data)
           Navigate('/admin')
         })
         .catch(error => {
