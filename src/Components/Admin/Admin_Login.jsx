@@ -24,9 +24,13 @@ const Admin_Login = () => {
     const inputRef = useRef(null);
     const Navigate = useNavigate();
 
+    const admin = useSelector((state) => state.admin.token)
+
     const handleSubmit = async () => {
         const adminEmail = inputRef.current.email.value;
         const adminPassword = inputRef.current.password.value;
+
+        
 
         axios
             .post("http://localhost:4000/admin/login", {
@@ -42,6 +46,7 @@ const Admin_Login = () => {
                 console.error(error);
                 alert("Please Try Again");
             });
+            console.log('Adminsss',admin);
     };
 
     return (
