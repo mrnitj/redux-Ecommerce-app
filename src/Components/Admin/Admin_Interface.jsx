@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { BsPersonRolodex } from 'react-icons/bs';
+import { BsPersonRolodex } from "react-icons/bs";
 
 import {
     CDBSidebar,
@@ -15,7 +15,6 @@ import { Navbar } from "react-bootstrap";
 import Admin_users from "./Admin_users";
 
 import Dealer_Interface from "../Dealer/Dealer_Interface";
-
 
 const Admin_Interface = () => {
     const [childrens, setChildrens] = useState(<Admin_users />);
@@ -45,15 +44,20 @@ const Admin_Interface = () => {
                             <NavLink exact onClick={() => setChildrens(<Admin_users />)} activeClassName="activeClicked">
                                 <CDBSidebarMenuItem icon="users">Users</CDBSidebarMenuItem>
                             </NavLink>
-                            <NavLink exact  activeClassName="activeClicked">
+                            <NavLink exact activeClassName="activeClicked">
                                 <CDBSidebarMenuItem icon="bars">Products</CDBSidebarMenuItem>
                             </NavLink>
                             <NavLink exact to="/analytics" activeClassName="activeClicked">
                                 <CDBSidebarMenuItem icon="chart-line">Revenue</CDBSidebarMenuItem>
                             </NavLink>
 
-                            <NavLink exact onClick={() => setChildrens(<Dealer_Interface/>)} to="/dealer"activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="user">Dealer</CDBSidebarMenuItem>
+                            <NavLink
+                                exact
+                                onClick={() => setChildrens(<Dealer_Interface />)}
+                                to="/dealer"
+                                activeClassName="activeClicked"
+                            >
+                                <CDBSidebarMenuItem icon="user">Dealer</CDBSidebarMenuItem>
                             </NavLink>
                         </CDBSidebarMenu>
                     </CDBSidebarContent>
